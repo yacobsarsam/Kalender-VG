@@ -55,7 +55,7 @@ public class Frame extends JFrame {
     public void buildDays(JPanel monthPanel, int amount){
         //Ska ersättas av paneler av en egen klass ev.
         for(int i = 0; i < amount; i++){
-            DayButton dayButton = new DayButton(LocalDate.now());
+            DayButton dayButton = new DayButton(LocalDate.of(2023, 10, 12));
             monthPanel.add(dayButton);
         }
     }

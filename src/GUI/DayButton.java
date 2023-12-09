@@ -26,6 +26,7 @@ public class DayButton extends JButton {
     public void dayButton(){
         setText(String.valueOf(date.getDayOfMonth()));
     }
+
     public void emptyButton(){
         setOpaque(false);
         setContentAreaFilled(false);
