@@ -43,7 +43,7 @@ public DayFrame(LocalDate date){
     //   setSize(600,600);
     setVisible(true);
     setLocationRelativeTo(null);
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    setDefaultCloseOperation(HIDE_ON_CLOSE);
 
 }
 
