@@ -13,6 +13,10 @@ public class Frame extends JFrame {
     private final JPanel eastPanel;
     private final JPanel westPanel;
 
+    //Labels
+    JLabel monthLabel;
+    JLabel yearLabel;
+
     //Buttons
     private final JButton nextMonth;
     private final JButton previousMonth;
@@ -60,12 +64,47 @@ public class Frame extends JFrame {
 
     public void buildNorthPanel(){
         //Weekdays, Month or Year info.
+        northPanel.setLayout(new GridLayout(3, 1));
+
+        monthLabel = new JLabel(String.valueOf(date.getMonth()));
+        northPanel.add(monthLabel);
+
+        yearLabel = new JLabel(String.valueOf(date.getYear()));
+        northPanel.add(yearLabel);
+
+        JPanel weekDayPanel = new JPanel(new BorderLayout());
+        JPanel weekDays = new JPanel(new GridLayout(1, 7));
+        String[] weekDayNames = {
+                "Måndag",
+                "Tisdag",
+                "Onsdag",
+                "Torsdag",
+                "Fredag",
+                "Lördag",
+                "Söndag",
+        };
+
+        for (String weekDayName : weekDayNames) {
+            JLabel label = new JLabel(weekDayName, SwingConstants.CENTER);
+            weekDays.add(label);
+        }
+
+        //Create empty Panels the width of the next and previous buttons - svenska eller engelska idk
+        JPanel emptyPanel = new JPanel();
+        emptyPanel.setPreferredSize(new Dimension(50, 1));
+
+        JPanel emptyPanel2 = new JPanel();
+        emptyPanel2.setPreferredSize(new Dimension(50, 1));
+
+        weekDayPanel.add(emptyPanel, BorderLayout.WEST);
+        weekDayPanel.add(emptyPanel2, BorderLayout.EAST);
+        weekDayPanel.add(weekDays, BorderLayout.CENTER);
+        northPanel.add(weekDayPanel);
         add(northPanel, BorderLayout.NORTH);
     }
 
     public void buildCenterPanel(){
         centerPanel.setLayout(new GridLayout(6, 7));
-        centerPanel.setBorder(new LineBorder(Color.GRAY, 4));
         buildDays();
         add(centerPanel, BorderLayout.CENTER);
     }
@@ -84,7 +123,7 @@ public class Frame extends JFrame {
     }
 
     public void buildSidePanels(){
-        Dimension buttonSize = new Dimension(50, this.getHeight());
+        Dimension buttonSize = new Dimension(35, this.getHeight());
 
         nextMonth.setPreferredSize(buttonSize);
         eastPanel.add(nextMonth);
