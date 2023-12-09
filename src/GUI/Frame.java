@@ -3,7 +3,6 @@ package GUI;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.util.Calendar;
 
 public class Frame extends JFrame {
     //Panels
@@ -48,12 +47,13 @@ public class Frame extends JFrame {
     }
 
     public void buildCenterPanel(){
-        centerPanel.setLayout(new GridLayout(5, 7));
+        centerPanel.setLayout(new GridLayout(6, 7));
         centerPanel.setBorder(new LineBorder(Color.BLACK, 4));
-        buildDays(centerPanel, 35);
+        buildDays(centerPanel, 42);
     }
 
     public void buildDays(JPanel monthPanel, int amount){
+        //Ska ersättas av paneler av en egen klass ev.
         for(int i = 0; i < amount; i++){
             JPanel dayPanel = new JPanel();
             dayPanel.setBorder(new LineBorder(Color.BLACK, 1));
