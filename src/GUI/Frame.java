@@ -1,5 +1,6 @@
 package GUI;
 
+import java.util.List;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -13,6 +14,8 @@ public class Frame extends JFrame {
     //Paths
     private final ImageIcon icon;
 
+    private LocalDate date;
+
     //TODO Remove Main
     public static void main(String[] args){
         Frame calendarFrame = new Frame();
@@ -22,6 +25,9 @@ public class Frame extends JFrame {
         northPanel = new JPanel();
         centerPanel = new JPanel();
         icon = new ImageIcon("Icons/Calendar.png");
+
+        date = LocalDate.now();
+
         buildFrame();
     }
 
@@ -48,15 +54,19 @@ public class Frame extends JFrame {
 
     public void buildCenterPanel(){
         centerPanel.setLayout(new GridLayout(6, 7));
-        centerPanel.setBorder(new LineBorder(Color.BLACK, 4));
-        buildDays(centerPanel, 42);
+        centerPanel.setBorder(new LineBorder(Color.GRAY, 4));
+        buildDays();
     }
 
-    public void buildDays(JPanel monthPanel, int amount){
-        //Ska ersättas av paneler av en egen klass ev.
-        for(int i = 0; i < amount; i++){
-            DayButton dayButton = new DayButton(LocalDate.of(2023, 10, 12));
-            monthPanel.add(dayButton);
+    public void buildDays(){
+        DayOfMonth dayOfMonth = new DayOfMonth(date);
+        List<LocalDate> localDateList = dayOfMonth.getDateList();
+        boolean currentMonth;
+
+        for(LocalDate localDate : localDateList){
+            currentMonth = localDate.getMonth().equals(date.getMonth());
+            DayButton dayButton = new DayButton(localDate, currentMonth);
+            centerPanel.add(dayButton);
         }
     }
 }

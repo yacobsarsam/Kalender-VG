@@ -5,18 +5,20 @@ import java.time.LocalDate;
 
 public class DayButton extends JButton {
 
-    boolean currentMonth;
+    boolean filled;
     LocalDate date;
 
-    public DayButton(LocalDate date){
-        currentMonth = true;
+    public DayButton(LocalDate date, boolean filled){
+        this.filled = filled;
         this.date = date;
         buildButton();
     }
 
     public void buildButton(){
-        if(currentMonth){
+        if(filled){
             dayButton();
+            //TODO remove - endast test
+            this.addActionListener(e -> System.out.println(date));
         }
         else{
             emptyButton();
@@ -30,5 +32,7 @@ public class DayButton extends JButton {
     public void emptyButton(){
         setOpaque(false);
         setContentAreaFilled(false);
+        setBorder(BorderFactory.createEmptyBorder());
     }
+
 }
