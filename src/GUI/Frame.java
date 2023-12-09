@@ -87,14 +87,15 @@ public class Frame extends JFrame {
         for (String weekDayName : weekDayNames) {
             JLabel label = new JLabel(weekDayName, SwingConstants.CENTER);
             weekDays.add(label);
+//            label.setBorder(new LineBorder(Color.BLACK, 2));
         }
 
         //Create empty Panels the width of the next and previous buttons - svenska eller engelska idk
         JPanel emptyPanel = new JPanel();
-        emptyPanel.setPreferredSize(new Dimension(50, 1));
+        emptyPanel.setPreferredSize(new Dimension(60, 1));
 
         JPanel emptyPanel2 = new JPanel();
-        emptyPanel2.setPreferredSize(new Dimension(50, 1));
+        emptyPanel2.setPreferredSize(new Dimension(60, 1));
 
         weekDayPanel.add(emptyPanel, BorderLayout.WEST);
         weekDayPanel.add(emptyPanel2, BorderLayout.EAST);
@@ -123,16 +124,14 @@ public class Frame extends JFrame {
     }
 
     public void buildSidePanels(){
-        Dimension buttonSize = new Dimension(35, this.getHeight());
+        Dimension buttonSize = new Dimension(50, this.getHeight());
 
         nextMonth.setPreferredSize(buttonSize);
         eastPanel.add(nextMonth);
         add(eastPanel, BorderLayout.EAST);
         nextMonth.addActionListener(e -> {
             date = date.plusMonths(1);
-            buildDays();
-            repaint();
-            revalidate();
+            changeMonthDetails();
         });
 
         previousMonth.setPreferredSize(buttonSize);
@@ -140,11 +139,18 @@ public class Frame extends JFrame {
         add(westPanel, BorderLayout.WEST);
         previousMonth.addActionListener(e -> {
             date = date.minusMonths(1);
-            buildDays();
-            repaint();
-            revalidate();
-        });
+            changeMonthDetails();
 
+        });
+    }
+
+    public void changeMonthDetails(){
+        buildDays();
+
+        monthLabel.setText(String.valueOf(date.getMonth()));
+        yearLabel.setText(String.valueOf(date.getYear()));
+        repaint();
+        revalidate();
     }
 
     public void setDate(LocalDate date) {
