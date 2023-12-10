@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 public class AnnotationSelection extends JFrame implements ActionListener {
+    LocalDate date;
 
     JFrame jf = new JFrame();
     JPanel jp = new JPanel();
@@ -13,7 +14,9 @@ public class AnnotationSelection extends JFrame implements ActionListener {
     JButton jb3 = new JButton("Ny påminnelse");
     JButton jb4 = new JButton("Redigera påminnelse");
 
-    public AnnotationSelection(){
+    public AnnotationSelection(LocalDate date){
+        this.date = date;
+
 
         jf.add(jp);
         jf.setVisible(true);
@@ -32,7 +35,7 @@ public class AnnotationSelection extends JFrame implements ActionListener {
         if(e.getSource()==jb1){
             jf.setVisible(false);
             //DiaryFrame df = new DiaryFrame();
-            DayFrame df = new DayFrame();
+            DayFrame df = new DayFrame(date);
 
         }
         if(e.getSource()==jb2){

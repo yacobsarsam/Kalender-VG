@@ -36,10 +36,11 @@ public class DayButton extends JButton implements ActionListener {
         setBorder(BorderFactory.createEmptyBorder());
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println(date);
-        AnnotationSelection as = new AnnotationSelection();
+        AnnotationSelection as = new AnnotationSelection(date);
 
         //DayFrame df = new DayFrame(date);
     }
