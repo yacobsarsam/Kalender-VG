@@ -1,5 +1,3 @@
-package GUI;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,42 +8,44 @@ public class DayFrame extends JFrame implements ActionListener {
     JPanel jp = new JPanel();
     JPanel jp1 = new JPanel();
     JPanel jp2 = new JPanel();
-    JLabel jl1= new JLabel("Skriv påminnelse eller dagbok");
+    JPanel jp3 = new JPanel();
+    JPanel jp4 = new JPanel();
+    JLabel jl1= new JLabel("DAGBOK");
+    JLabel jl2 = new JLabel("Rubrik:");
+    JTextArea jta2 = new JTextArea(1,25);
     JTextArea jta1=new JTextArea(20,50);
-    JButton jb1= new JButton("Spara påminnelse");
-    JButton jb2= new JButton("Spara dagbok");
-    JButton jb3= new JButton("Uppdatera");
-    JButton jb4= new JButton("Stäng");
+    JButton jb1= new JButton("Spara");
+    JButton jb2= new JButton("Ångra");
 
 
     JScrollPane scroll = new JScrollPane(jta1);
-public DayFrame(LocalDate date){
-    jp.setLayout(new BorderLayout());
-    jp2.setLayout(new BorderLayout());
-    jp2.add(jl1,BorderLayout.NORTH);
-    jp2.add(scroll,BorderLayout.SOUTH);
+    public DayFrame(){
+        jp.setLayout(new BorderLayout());
+        jp2.setLayout(new BorderLayout());
+        jp3.setLayout(new FlowLayout());
+        jp4.add(jta1);
+        jp3.add(jl2);
+        jp3.add(jta2);
 
-    jp1.add(jb1);
-    jp1.add(jb2);
-    jp1.add(jb3);
-    jp1.add(jb4);
+        jp2.add(jl1,BorderLayout.NORTH);
+        jp2.add(jp3,BorderLayout.SOUTH);
 
-    jp.setLayout(new BorderLayout());
-    jp.add(jp2,BorderLayout.NORTH);
-    jp.add(jp1, BorderLayout.CENTER);
-    add(jp);
-    jb1.addActionListener(this);
-    jb2.addActionListener(this);
-    jb3.addActionListener(this);
-    jb4.addActionListener(this);
+        jp1.add(jb1);
+        jp1.add(jb2);
 
-    pack();
-    //   setSize(600,600);
-    setVisible(true);
-    setLocationRelativeTo(null);
-    setDefaultCloseOperation(HIDE_ON_CLOSE);
+        jp.setLayout(new BorderLayout());
+        jp.add(jp2,BorderLayout.NORTH);
+        jp.add(jp4, BorderLayout.CENTER);
+        jp.add(jp1, BorderLayout.SOUTH);
+        add(jp);
+        jb1.addActionListener(this);
+        jb2.addActionListener(this);
 
-}
+        pack();
+        setVisible(true);
+        setLocationRelativeTo(null);
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -53,12 +53,6 @@ public DayFrame(LocalDate date){
 
         }
         if(e.getSource()==jb2){
-
-        }
-        if(e.getSource()==jb3){
-
-        }
-        if(e.getSource()==jb4){
 
         }
     }

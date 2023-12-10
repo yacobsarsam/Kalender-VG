@@ -1,10 +1,7 @@
-package GUI;
-
-import java.util.List;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Frame extends JFrame {
     //Panels
@@ -55,11 +52,11 @@ public class Frame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("MyCalendar");
         setIconImage(icon.getImage());
+        setVisible(true);
 
         buildNorthPanel();
         buildCenterPanel();
         buildSidePanels();
-        setVisible(true);
     }
 
     public void buildNorthPanel(){
