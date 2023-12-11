@@ -1,9 +1,11 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class DayButton extends JButton implements ActionListener {
 
@@ -18,6 +20,9 @@ public class DayButton extends JButton implements ActionListener {
 
     public void buildButton(){
         if(filled){
+            if(date.equals(LocalDate.now())){
+                setBackground(Color.green);
+            }
             dayButton();
             //TODO remove - endast test
             this.addActionListener(this);
