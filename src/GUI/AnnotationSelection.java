@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +14,7 @@ public class AnnotationSelection extends JFrame implements ActionListener {
     JButton jb1 = new JButton("Nytt dagboksinlägg");
     JButton jb2 = new JButton("Redigera dagboksinlägg");
     JButton jb3 = new JButton("Ny påminnelse");
-    JButton jb4 = new JButton("Redigera påminnelse");
+    JButton jb4 = new JButton("Se påminnelser");
 
     public AnnotationSelection(LocalDate date){
         this.date = date;
@@ -24,6 +26,9 @@ public class AnnotationSelection extends JFrame implements ActionListener {
         jf.setSize(210,250);
         jf.setLocationRelativeTo(null);
         jb1.addActionListener(this);
+        jb2.addActionListener(this);
+        jb3.addActionListener(this);
+        jb4.addActionListener(this);
         jp.add(jb1);
         jp.add(jb2);
         jp.add(jb3);
@@ -42,10 +47,11 @@ public class AnnotationSelection extends JFrame implements ActionListener {
 
         }
         if(e.getSource()==jb3){
-
+            jf.setVisible(false);
+            Reminder r = new Reminder(date);
         }
         if(e.getSource()==jb4){
-
+            ViewReminders vr = new ViewReminders(date);
         }
     }
 }

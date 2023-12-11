@@ -1,5 +1,9 @@
+package GUI;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +50,7 @@ public class DiaryEntry {
     }
 
     public void diaryEntry(){
-        try(BufferedReader br = new BufferedReader(new FileReader(".\\src\\diary.txt"));){
+        try(BufferedReader br = new BufferedReader(new FileReader("/Users/pontuslundin/Desktop/javamapp/Analys och Design/Calendar/src/GUI/diary.txt"));){
             while(true){
                 int tempInt = 0;
                 temp = br.readLine();
