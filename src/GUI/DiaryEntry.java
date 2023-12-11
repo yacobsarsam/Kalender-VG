@@ -100,5 +100,7 @@ public class DiaryEntry {
 
     }
 
-
+    public List<DiaryEntry> getDiaryEntryList() {
+        return diaryEntryList;
+    }
 }
