@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,26 +65,26 @@ public class DayFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==jb1){
 
-            temp1 = String.valueOf(date);
-            //temp1 = String.valueOf(LocalDate.now());
+            /*temp1 = String.valueOf(date);
             temp2 = jta2.getText();
             temp3 = jta1.getText();
             DiaryEntry de = new DiaryEntry(temp1, temp2, temp3);
-            de.diaryEntryList.add(de);
+            de.diaryEntryList.add(de);*/
 
-            temp = String.valueOf(LocalDate.now());
+            temp = String.valueOf(date);
             temp = temp + "%" + jta2.getText();
-            temp = temp + "%" + jta1.getText();
-            setVisible(false);
-            //System.out.println(temp);
-            for (int i = 0; i < de.diaryEntryList.size(); i++) {
-                System.out.println(de.diaryEntryList.get(i).date.toString());
-                System.out.println(de.diaryEntryList.get(i).header.toString());
-                System.out.println(de.diaryEntryList.get(i).body.toString());
+            temp = temp + "%" + jta1.getText() + "%\n";
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter(".\\src\\diary.txt", true));){
+                bw.write(temp);
             }
+            catch (Exception exc){
+                exc.printStackTrace();
+            }
+            setVisible(false);
         }
         if(e.getSource()==jb2){
-
+            DiaryEntry de = new DiaryEntry(temp1,temp2,temp3);
+            de.diaryEntry();
             setVisible(false);
         }
     }
