@@ -1,5 +1,7 @@
 package GUI;
 
+import GUI.ButtonDecorator.ButtonDecorator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +12,14 @@ public class DayButton extends JButton implements ActionListener {
 
     boolean filled;
     LocalDate date;
+    ButtonDecorator buttonDecorator;
+
+    public DayButton(LocalDate date, boolean filled, ButtonDecorator buttonDecorator){
+        this.filled = filled;
+        this.date = date;
+        this.buttonDecorator = buttonDecorator;
+        buildButton();
+    }
 
     public DayButton(LocalDate date, boolean filled){
         this.filled = filled;
@@ -48,5 +58,9 @@ public class DayButton extends JButton implements ActionListener {
         AnnotationSelection as = new AnnotationSelection(date);
 
         //DayFrame df = new DayFrame(date);
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 }

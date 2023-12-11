@@ -1,5 +1,8 @@
 package GUI;
 
+import GUI.ButtonDecorator.ButtonDecorator;
+import GUI.ButtonDecorator.FilledButtonDecorator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
@@ -115,9 +118,19 @@ public class Frame extends JFrame {
         List<LocalDate> localDateList = dayOfMonth.getDateList();
         boolean currentMonth;
 
+        PostDatabase postDatabase = new PostDatabase();
+
         for(LocalDate localDate : localDateList){
             currentMonth = localDate.getMonth().equals(date.getMonth());
             DayButton dayButton = new DayButton(localDate, currentMonth);
+            String date = localDate.toString();
+            //HÄR SKRIVER JAG LITE GALET
+            if(postDatabase.findDataAtDate(date)){
+                ButtonDecorator buttonDecorator = new FilledButtonDecorator(dayButton);
+            }
+            else{
+                dayButton.setBackground(Color.WHITE);
+            }
             centerPanel.add(dayButton);
         }
     }

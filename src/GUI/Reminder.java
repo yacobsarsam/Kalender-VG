@@ -60,7 +60,7 @@ public class Reminder extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jb1) {
             String reminder = jta1.getText();
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/pontuslundin/Desktop/javamapp/Analys och Design/Calendar/src/GUI/Reminders.txt", true));) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/GUI/Reminders.txt", true));) {
                 bw.write(date + ": " + reminder + "\n");
 
             } catch (Exception exc) {

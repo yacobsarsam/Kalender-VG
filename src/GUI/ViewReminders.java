@@ -57,7 +57,7 @@ public class ViewReminders extends JFrame implements ActionListener {
 
 
     private void readReminders() {
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/pontuslundin/Desktop/javamapp/Analys och Design/Calendar/src/GUI/Reminders.txt"));) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/GUI/Reminders.txt"));) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(":");
