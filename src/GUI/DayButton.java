@@ -45,9 +45,9 @@ public class DayButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //raden nedan kan tas bort, behålller den för att es datumet i konsol
-        System.out.println(date);
-        // skickar "date" till konstruktor för att kunna hantera spesifikt dam i ActionListener
-        DayFrame df = new DayFrame(date);
+        //System.out.println(date);
+        AnnotationSelection as = new AnnotationSelection(date);
+
+        //DayFrame df = new DayFrame(date);
     }
 }

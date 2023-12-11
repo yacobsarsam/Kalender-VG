@@ -1,10 +1,9 @@
 package GUI;
 
-import java.util.List;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Frame extends JFrame {
     //Panels

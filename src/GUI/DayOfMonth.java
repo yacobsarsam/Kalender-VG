@@ -1,6 +1,5 @@
 package GUI;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ public class DayOfMonth {
     public LocalDate countDaysBefore(LocalDate date){
         //Check how many days after monday the month starts with
         int day = LocalDate.of(year, month, 1).getDayOfWeek().getValue();
-        int daysBefore = 7 - (7 - (day - 1));
+        int daysBefore = 7 - (day -1);
 
         return date.minusDays(daysBefore);
     }
