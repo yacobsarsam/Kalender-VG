@@ -23,7 +23,7 @@ public class ViewReminders extends JFrame implements ActionListener {
     JTextArea jta1 = new JTextArea(10, 40);
     JButton jb2 = new JButton("Stäng");
 
-    public List<Reminder> reminderList = new ArrayList<>();
+    //public List<Reminder> reminderList = new ArrayList<>();
 
     public ViewReminders(LocalDate date) {
         this.date = date;
@@ -39,6 +39,7 @@ public class ViewReminders extends JFrame implements ActionListener {
         jp2.add(jp3, BorderLayout.SOUTH);
 
         jp1.add(jb2);
+        jb2.addActionListener(this);
 
         jp.setLayout(new BorderLayout());
         jp.add(jp2, BorderLayout.NORTH);
@@ -66,7 +67,7 @@ public class ViewReminders extends JFrame implements ActionListener {
 
                     if (reminderDate.equals(date)) {
                         // Lägg till påminnelsen för det aktuella datumet
-                        jta1.append(reminderText + "\n");
+                        jta1.append("\u25CF " + reminderText + "\n");
                     }
                 }
             }
@@ -77,8 +78,8 @@ public class ViewReminders extends JFrame implements ActionListener {
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==jb2){
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource()==jb2) {
             setVisible(false);
         }
     }
