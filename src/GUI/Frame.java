@@ -54,11 +54,11 @@ public class Frame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("MyCalendar");
         setIconImage(icon.getImage());
-        setVisible(true);
 
         buildNorthPanel();
         buildCenterPanel();
         buildSidePanels();
+        setVisible(true);
     }
 
     public void buildNorthPanel(){
