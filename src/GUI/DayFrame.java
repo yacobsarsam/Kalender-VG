@@ -4,62 +4,90 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DayFrame extends JFrame implements ActionListener {
+    public List<DiaryEntry> diaryEntryList = new ArrayList<>();
+    LocalDate date;
     JPanel jp = new JPanel();
     JPanel jp1 = new JPanel();
     JPanel jp2 = new JPanel();
-    JLabel jl1= new JLabel("Skriv påminnelse eller dagbok");
-    JTextArea jta1=new JTextArea(20,50);
-    JButton jb1= new JButton("Spara påminnelse");
-    JButton jb2= new JButton("Spara dagbok");
-    JButton jb3= new JButton("Uppdatera");
-    JButton jb4= new JButton("Stäng");
+    JPanel jp3 = new JPanel();
+    JPanel jp4 = new JPanel();
+    JLabel jl1= new JLabel("DAGBOK");
+    JLabel jl2 = new JLabel("Rubrik:");
+    JTextArea jta2 = new JTextArea(1,25); //Rubrik
+    JTextArea jta1=new JTextArea(20,50); //Huvudfönster
+    JButton jb1= new JButton("Spara");
+    JButton jb2= new JButton("Ångra");
+
+    String temp = "";
+    String temp1 = "";
+    String temp2 = "";
+    String temp3 = "";
 
 
     JScrollPane scroll = new JScrollPane(jta1);
-public DayFrame(LocalDate date){
-    jp.setLayout(new BorderLayout());
-    jp2.setLayout(new BorderLayout());
-    jp2.add(jl1,BorderLayout.NORTH);
-    jp2.add(scroll,BorderLayout.SOUTH);
+    public DayFrame(LocalDate date){
+        this.date = date;
+        jp.setLayout(new BorderLayout());
+        jp2.setLayout(new BorderLayout());
+        jp3.setLayout(new FlowLayout());
+        jta1.setLineWrap(true);
+        jta1.setWrapStyleWord(true);
+        jp4.add(jta1);
+        jp3.add(jl2);
+        jp3.add(jta2);
 
-    jp1.add(jb1);
-    jp1.add(jb2);
-    jp1.add(jb3);
-    jp1.add(jb4);
+        jp2.add(jl1,BorderLayout.NORTH);
+        jp2.add(jp3,BorderLayout.SOUTH);
 
-    jp.setLayout(new BorderLayout());
-    jp.add(jp2,BorderLayout.NORTH);
-    jp.add(jp1, BorderLayout.CENTER);
-    add(jp);
-    jb1.addActionListener(this);
-    jb2.addActionListener(this);
-    jb3.addActionListener(this);
-    jb4.addActionListener(this);
+        jp1.add(jb1);
+        jp1.add(jb2);
 
-    pack();
-    //   setSize(600,600);
-    setVisible(true);
-    setLocationRelativeTo(null);
-    setDefaultCloseOperation(HIDE_ON_CLOSE);
+        jp.setLayout(new BorderLayout());
+        jp.add(jp2,BorderLayout.NORTH);
+        jp.add(jp4, BorderLayout.CENTER);
+        jp.add(jp1, BorderLayout.SOUTH);
+        add(jp);
+        jb1.addActionListener(this);
+        jb2.addActionListener(this);
 
-}
+        pack();
+        setVisible(true);
+        setLocationRelativeTo(null);
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==jb1){
 
+            /*temp1 = String.valueOf(date);
+            temp2 = jta2.getText();
+            temp3 = jta1.getText();
+            DiaryEntry de = new DiaryEntry(temp1, temp2, temp3);
+            de.diaryEntryList.add(de);*/
+
+            temp = String.valueOf(date);
+            temp = temp + "%" + jta2.getText();
+            temp = temp + "%" + jta1.getText() + "%\n";
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/pontuslundin/Desktop/javamapp/Analys och Design/Calendar/src/GUI/diary.txt", true));){
+                bw.write(temp);
+            }
+            catch (Exception exc){
+                exc.printStackTrace();
+            }
+            setVisible(false);
         }
         if(e.getSource()==jb2){
-
-        }
-        if(e.getSource()==jb3){
-
-        }
-        if(e.getSource()==jb4){
-
+            DiaryEntry de = new DiaryEntry(temp1,temp2,temp3);
+            de.diaryEntry();
+            setVisible(false);
         }
     }
 }
