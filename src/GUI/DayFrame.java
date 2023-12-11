@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DayFrame extends JFrame implements ActionListener {
-    public List<DiaryEntry> diaryEntryList = new ArrayList<>();
     LocalDate date;
     JPanel jp = new JPanel();
     JPanel jp1 = new JPanel();
@@ -24,14 +23,9 @@ public class DayFrame extends JFrame implements ActionListener {
     JTextArea jta1=new JTextArea(20,50); //Huvudfönster
     JButton jb1= new JButton("Spara");
     JButton jb2= new JButton("Ångra");
-
     String temp = "";
-    String temp1 = "";
-    String temp2 = "";
-    String temp3 = "";
 
 
-    JScrollPane scroll = new JScrollPane(jta1);
     public DayFrame(LocalDate date){
         this.date = date;
         jp.setLayout(new BorderLayout());
@@ -66,17 +60,10 @@ public class DayFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==jb1){
-
-            /*temp1 = String.valueOf(date);
-            temp2 = jta2.getText();
-            temp3 = jta1.getText();
-            DiaryEntry de = new DiaryEntry(temp1, temp2, temp3);
-            de.diaryEntryList.add(de);*/
-
             temp = String.valueOf(date);
-            temp = temp + "%" + jta2.getText();
-            temp = temp + "%" + jta1.getText() + "%\n";
-            try(BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/pontuslundin/Desktop/javamapp/Analys och Design/Calendar/src/GUI/diary.txt", true));){
+            temp = temp + "¤" + jta2.getText();
+            temp = temp + "¤" + jta1.getText() + "¤\n";
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter(".\\src\\GUI\\diary.txt", true));){
                 bw.write(temp);
             }
             catch (Exception exc){
@@ -85,8 +72,6 @@ public class DayFrame extends JFrame implements ActionListener {
             setVisible(false);
         }
         if(e.getSource()==jb2){
-            DiaryEntry de = new DiaryEntry(temp1,temp2,temp3);
-            de.diaryEntry();
             setVisible(false);
         }
     }

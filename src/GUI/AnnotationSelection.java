@@ -12,7 +12,7 @@ public class AnnotationSelection extends JFrame implements ActionListener {
     JFrame jf = new JFrame();
     JPanel jp = new JPanel();
     JButton jb1 = new JButton("Nytt dagboksinlägg");
-    JButton jb2 = new JButton("Redigera dagboksinlägg");
+    JButton jb2 = new JButton("Se dagboksinlägg");
     JButton jb3 = new JButton("Ny påminnelse");
     JButton jb4 = new JButton("Se påminnelser");
 
@@ -39,12 +39,11 @@ public class AnnotationSelection extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==jb1){
             jf.setVisible(false);
-            //DiaryFrame df = new DiaryFrame();
             DayFrame df = new DayFrame(date);
 
         }
         if(e.getSource()==jb2){
-
+            ViewDiary vd = new ViewDiary(date);
         }
         if(e.getSource()==jb3){
             jf.setVisible(false);
