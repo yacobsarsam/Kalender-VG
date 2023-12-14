@@ -1,7 +1,7 @@
 package GUI;
 
 import GUI.ButtonDecorator.ButtonDecorator;
-import GUI.ButtonDecorator.FilledButtonDecorator;
+import GUI.ButtonDecorator.CyanButtonDecorator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -126,7 +126,8 @@ public class Frame extends JFrame {
             String date = localDate.toString();
             //HÄR SKRIVER JAG LITE GALET
             if(postDatabase.findDataAtDate(date)){
-                ButtonDecorator buttonDecorator = new FilledButtonDecorator(dayButton);
+                ButtonDecorator buttonDecorator = new CyanButtonDecorator(dayButton);
+                buttonDecorator.fillButton();
             }
             else{
                 dayButton.setBackground(Color.WHITE);
