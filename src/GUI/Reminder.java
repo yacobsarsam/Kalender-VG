@@ -38,6 +38,9 @@ public class Reminder extends JFrame implements ActionListener {
         jp2.add(jl1, BorderLayout.NORTH);
         jp2.add(jp3, BorderLayout.SOUTH);
 
+        //så att det byter rad automatiskt och lagrar utan radbyte
+        jta1.setLineWrap(true);
+
         jp1.add(jb1);
         jp1.add(jb2);
 

@@ -68,10 +68,12 @@ public class Frame extends JFrame {
         //Weekdays, Month or Year info.
         northPanel.setLayout(new GridLayout(3, 1));
 
-        monthLabel = new JLabel(String.valueOf(date.getMonth()));
+        monthLabel = new JLabel(String.valueOf(date.getMonth()), SwingConstants.CENTER);
+        monthLabel.setFont(new Font("Sans Serif", Font.BOLD, 22));
         northPanel.add(monthLabel);
 
-        yearLabel = new JLabel(String.valueOf(date.getYear()));
+        yearLabel = new JLabel(String.valueOf(date.getYear()), SwingConstants.CENTER);
+        yearLabel.setFont(new Font("Sans Serif", Font.BOLD, 14));
         northPanel.add(yearLabel);
 
         JPanel weekDayPanel = new JPanel(new BorderLayout());
@@ -137,9 +139,10 @@ public class Frame extends JFrame {
     }
 
     public void buildSidePanels(){
-        Dimension buttonSize = new Dimension(50, this.getHeight());
+        Dimension buttonSize = new Dimension(50, this.getHeight() - 150);
 
         nextMonth.setPreferredSize(buttonSize);
+        nextMonth.setBackground(Color.lightGray);
         eastPanel.add(nextMonth);
         add(eastPanel, BorderLayout.EAST);
         nextMonth.addActionListener(e -> {
@@ -148,6 +151,7 @@ public class Frame extends JFrame {
         });
 
         previousMonth.setPreferredSize(buttonSize);
+        previousMonth.setBackground(Color.lightGray);
         westPanel.add(previousMonth);
         add(westPanel, BorderLayout.WEST);
         previousMonth.addActionListener(e -> {

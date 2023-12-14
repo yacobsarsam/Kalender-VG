@@ -1,7 +1,6 @@
 package GUI;
 
 import java.io.*;
-import java.time.LocalDate;
 
 public class PostDatabase {
 
@@ -14,7 +13,7 @@ public class PostDatabase {
             while(temp != null){
                 String[] content = temp.split("%");
                 String date = content[0];
-                if(date.equals(localDate.toString())){
+                if(date.equals(localDate)){
                     data = true;
                     break;
                 }
