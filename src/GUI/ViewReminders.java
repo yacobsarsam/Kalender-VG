@@ -23,8 +23,6 @@ public class ViewReminders extends JFrame implements ActionListener {
     JTextArea jta1 = new JTextArea(10, 40);
     JButton jb2 = new JButton("Stäng");
 
-    //public List<Reminder> reminderList = new ArrayList<>();
-
     public ViewReminders(LocalDate date) {
         this.date = date;
         setTitle("Påminnelser");
@@ -57,7 +55,7 @@ public class ViewReminders extends JFrame implements ActionListener {
 
 
     private void readReminders() {
-        try (BufferedReader br = new BufferedReader(new FileReader("src/GUI/Reminders.txt"));) {
+        try (BufferedReader br = new BufferedReader(new FileReader(".\\src\\GUI\\Reminders.txt"));) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(":");

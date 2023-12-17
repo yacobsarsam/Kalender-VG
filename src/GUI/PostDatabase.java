@@ -8,10 +8,10 @@ public class PostDatabase {
 
         boolean data = false;
 
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src/GUI/diary.txt"))){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(".\\src\\GUI\\diary.txt"))){
             String temp = bufferedReader.readLine();
             while(temp != null){
-                String[] content = temp.split("%");
+                String[] content = temp.split("¤");
                 String date = content[0];
                 if(date.equals(localDate)){
                     data = true;
@@ -23,7 +23,7 @@ public class PostDatabase {
             throw new RuntimeException(e);
         }
 
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src/GUI/Reminders.txt"))){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(".\\src\\GUI\\Reminders.txt"))){
             String temp = bufferedReader.readLine();
             while(temp != null){
                 String[] content = temp.split(":");

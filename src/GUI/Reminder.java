@@ -18,12 +18,9 @@ public class Reminder extends JFrame implements ActionListener {
     JPanel jp3 = new JPanel();
     JPanel jp4 = new JPanel();
     JLabel jl1 = new JLabel("Lägg till påminnelse");
-    //JTextArea jta2 = new JTextArea(10, 25);
     JTextArea jta1 = new JTextArea(10, 40);
     JButton jb1 = new JButton("Spara");
     JButton jb2 = new JButton("Stäng");
-
-    public List<Reminder> reminderList = new ArrayList<>();
 
     public Reminder(LocalDate date) {
         this.date = date;
@@ -31,9 +28,7 @@ public class Reminder extends JFrame implements ActionListener {
         jp.setLayout(new BorderLayout());
         jp2.setLayout(new BorderLayout());
         jp3.setLayout(new FlowLayout());
-        //jta2.setFocusable(false);
         jp4.add(jta1);
-        //jp4.add(jta2);
 
         jp2.add(jl1, BorderLayout.NORTH);
         jp2.add(jp3, BorderLayout.SOUTH);
@@ -63,13 +58,12 @@ public class Reminder extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jb1) {
             String reminder = jta1.getText();
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/GUI/Reminders.txt", true));) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(".\\src\\GUI\\Reminders.txt", true));) {
                 bw.write(date + ": " + reminder + "\n");
 
             } catch (Exception exc) {
                 exc.printStackTrace();
             }
-            //jta2.append(reminder + "\n");
             setVisible(false);
 
         }
