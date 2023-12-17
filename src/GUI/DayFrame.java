@@ -64,6 +64,7 @@ public class DayFrame extends JFrame implements ActionListener {
             temp = temp + "¤" + jta2.getText();
             temp = temp + "¤" + jta1.getText() + "¤\n";
             try(BufferedWriter bw = new BufferedWriter(new FileWriter(".\\src\\GUI\\diary.txt", true));){
+
                 bw.write(temp);
             }
             catch (Exception exc){
