@@ -28,12 +28,6 @@ public class Frame extends JFrame {
 
     private LocalDate date;
 
-    //TODO Remove Main
-    public static void main(String[] args){
-        @SuppressWarnings("unused")
-        Frame calendarFrame = new Frame();
-    }
-
     public Frame(){
         northPanel = new JPanel();
         centerPanel = new JPanel();

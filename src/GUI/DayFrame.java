@@ -76,7 +76,7 @@ public class DayFrame extends JFrame implements ActionListener {
             temp = String.valueOf(date);
             temp = temp + "%" + jta2.getText();
             temp = temp + "%" + jta1.getText() + "%\n";
-            try(BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/pontuslundin/Desktop/javamapp/Analys och Design/Calendar/src/GUI/diary.txt", true));){
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/GUI/diary.txt", true));){
                 bw.write(temp);
             }
             catch (Exception exc){
