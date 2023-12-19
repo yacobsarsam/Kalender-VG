@@ -1,4 +1,4 @@
-package GUI;
+package GUI.FacadePattern;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewReminders extends JFrame implements ActionListener {
+public class ViewReminders extends JFrame implements ActionListener, GUI {
 
     LocalDate date;
     JPanel jp = new JPanel();
@@ -23,7 +23,7 @@ public class ViewReminders extends JFrame implements ActionListener {
     JTextArea jta1 = new JTextArea(10, 40);
     JButton jb2 = new JButton("Stäng");
 
-    public ViewReminders(LocalDate date) {
+    public void Draw(LocalDate date) {
         this.date = date;
         setTitle("Påminnelser");
         jp.setLayout(new BorderLayout());
@@ -55,7 +55,7 @@ public class ViewReminders extends JFrame implements ActionListener {
 
 
     private void readReminders() {
-        try (BufferedReader br = new BufferedReader(new FileReader(".\\src\\GUI\\Reminders.txt"));) {
+        try (BufferedReader br = new BufferedReader(new FileReader("/src/GUI/Reminders.txt"));) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(":");

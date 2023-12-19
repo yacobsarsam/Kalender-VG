@@ -1,6 +1,8 @@
 package GUI.ButtonDecorator;
 
 import GUI.DayButton;
+
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public abstract class ButtonDecorator {
@@ -14,5 +16,8 @@ public abstract class ButtonDecorator {
 
     public void fillButton(){
         button.setBackground(color);
+    }
+    public void SetButtonBorderColor(){
+        button.setBorder(new LineBorder(color));
     }
 }

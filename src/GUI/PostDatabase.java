@@ -4,7 +4,7 @@ import java.io.*;
 
 public class PostDatabase {
 
-    public boolean findDataAtDate(String localDate){
+    public boolean findDataAtPost(String localDate){
 
         boolean data = false;
 
@@ -22,6 +22,12 @@ public class PostDatabase {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        return data;
+    }
+    public boolean findDataAtReminder(String localDate){
+
+        boolean data = false;
 
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(".\\src\\GUI\\Reminders.txt"))){
             String temp = bufferedReader.readLine();

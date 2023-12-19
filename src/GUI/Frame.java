@@ -2,6 +2,7 @@ package GUI;
 
 import GUI.ButtonDecorator.ButtonDecorator;
 import GUI.ButtonDecorator.CyanButtonDecorator;
+import GUI.ButtonDecorator.RedButtonDecorator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class Frame extends JFrame {
     private final JPanel centerPanel;
     private final JPanel eastPanel;
     private final JPanel westPanel;
-
+    private final JPanel southPanel;
     //Labels
     JLabel monthLabel;
     JLabel yearLabel;
@@ -22,6 +23,8 @@ public class Frame extends JFrame {
     //Buttons
     private final JButton nextMonth;
     private final JButton previousMonth;
+
+    JButton addressBook = new JButton("Adressbok");
 
     //Paths
     private final ImageIcon icon;
@@ -33,7 +36,7 @@ public class Frame extends JFrame {
         centerPanel = new JPanel();
         eastPanel = new JPanel();
         westPanel = new JPanel();
-
+        southPanel = new JPanel();
         nextMonth = new JButton(">>");
         previousMonth = new JButton("<<");
 
@@ -55,7 +58,16 @@ public class Frame extends JFrame {
         buildNorthPanel();
         buildCenterPanel();
         buildSidePanels();
+        buildSouthPanel();
         setVisible(true);
+    }
+
+    private void buildSouthPanel() {
+        //Adressbok knappen.
+        southPanel.setLayout(new BorderLayout());
+        southPanel.add(addressBook);
+        add(southPanel,BorderLayout.SOUTH);
+        addressBook.addActionListener(e -> {AdressBook ab = new AdressBook();});
     }
 
     public void buildNorthPanel(){
@@ -69,6 +81,8 @@ public class Frame extends JFrame {
         yearLabel = new JLabel(String.valueOf(date.getYear()), SwingConstants.CENTER);
         yearLabel.setFont(new Font("Sans Serif", Font.BOLD, 14));
         northPanel.add(yearLabel);
+
+
 
         JPanel weekDayPanel = new JPanel(new BorderLayout());
         JPanel weekDays = new JPanel(new GridLayout(1, 7));
@@ -121,13 +135,25 @@ public class Frame extends JFrame {
             DayButton dayButton = new DayButton(localDate, currentMonth);
             String date = localDate.toString();
             //HÄR SKRIVER JAG LITE GALET
-            if(postDatabase.findDataAtDate(date)){
-                ButtonDecorator buttonDecorator = new CyanButtonDecorator(dayButton);
-                buttonDecorator.fillButton();
-            }
-            else{
-                dayButton.setBackground(Color.WHITE);
-            }
+            dayButton.setBackground(Color.WHITE);
+
+            //if(postDatabase.findDataAtPost(date)||postDatabase.findDataAtReminder(date)){
+
+                if(postDatabase.findDataAtPost(date)){
+                    ButtonDecorator buttonDecorator = new CyanButtonDecorator(dayButton);
+                    buttonDecorator.fillButton();
+
+
+                }
+                if (postDatabase.findDataAtReminder(date)) {
+                    ButtonDecorator buttonDecorator = new RedButtonDecorator(dayButton);
+                    buttonDecorator.SetButtonBorderColor();
+                    }
+
+
+
+
+
             centerPanel.add(dayButton);
         }
     }

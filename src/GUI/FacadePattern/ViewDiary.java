@@ -1,4 +1,4 @@
-package GUI;
+package GUI.FacadePattern;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewDiary extends JFrame implements ActionListener {
+public class ViewDiary extends JFrame implements ActionListener, GUI {
 
     LocalDate date;
     JPanel jp = new JPanel();
@@ -38,7 +38,7 @@ public class ViewDiary extends JFrame implements ActionListener {
     String temp3 = "";
 
 
-    public ViewDiary(LocalDate date) {
+    public void Draw(LocalDate date) {
         this.date = date;
         jp.setLayout(new BorderLayout());
         jp2.setLayout(new BorderLayout());
@@ -71,7 +71,7 @@ public class ViewDiary extends JFrame implements ActionListener {
     private void readDiary(){
         jta2.setFocusable(false);
         jta1.setFocusable(false);
-        try (BufferedReader br = new BufferedReader(new FileReader(".\\src\\GUI\\Diary.txt"));) {
+        try (BufferedReader br = new BufferedReader(new FileReader(".src/GUI/Diary.txt"));) {
             while ((temp = br.readLine()) != null) {
                 counter++;
                 String[] parts = temp.split("¤");
@@ -94,7 +94,7 @@ public class ViewDiary extends JFrame implements ActionListener {
     }
 
     private void getDiaryEntries(){
-        try (BufferedReader br = new BufferedReader(new FileReader(".\\src\\GUI\\Diary.txt"));) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/GUI/Diary.txt"));) {
             String tempInput;
             while ((tempInput = br.readLine()) != null){
                 diaryList.add(tempInput);
@@ -111,13 +111,13 @@ public class ViewDiary extends JFrame implements ActionListener {
         temp3 = jta1.getText();
         diaryList.remove(postEntry-1);
         diaryList.add(postEntry-1,temp1 + "¤" + temp2 + "¤" + temp3 + "¤");
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(".\\src\\GUI\\diary.txt"))){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/GUI/diary.txt"))){
             bw.write("");
         }
         catch (Exception ex){
             ex.printStackTrace();
         }
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(".\\src\\GUI\\diary.txt", true))){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/GUI/diary.txt", true))){
             for (int i = 0; i < diaryList.size(); i++) {
                 bw.write(diaryList.get(i) + "\n");
             }

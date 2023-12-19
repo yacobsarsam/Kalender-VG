@@ -1,4 +1,4 @@
-package GUI;
+package GUI.FacadePattern;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Reminder extends JFrame implements ActionListener {
+public class Reminder extends JFrame implements ActionListener, GUI {
 
     LocalDate date;
     JPanel jp = new JPanel();
@@ -22,7 +22,7 @@ public class Reminder extends JFrame implements ActionListener {
     JButton jb1 = new JButton("Spara");
     JButton jb2 = new JButton("Stäng");
 
-    public Reminder(LocalDate date) {
+    public void Draw(LocalDate date) {
         this.date = date;
         setTitle("Påminnelser");
         jp.setLayout(new BorderLayout());
@@ -58,7 +58,7 @@ public class Reminder extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jb1) {
             String reminder = jta1.getText();
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(".\\src\\GUI\\Reminders.txt", true));) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/GUI/Reminders.txt", true));) {
                 bw.write(date + ": " + reminder + "\n");
 
             } catch (Exception exc) {

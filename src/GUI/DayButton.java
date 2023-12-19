@@ -1,6 +1,7 @@
 package GUI;
 
 import GUI.ButtonDecorator.ButtonDecorator;
+import GUI.FacadePattern.AnnotationSelection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,9 +34,7 @@ public class DayButton extends JButton implements ActionListener {
                 setBackground(Color.green);
             }
             dayButton();
-            //TODO remove - endast test
             this.addActionListener(this);
-            //this.addActionListener(e -> System.out.println(date));
         }
         else{
             emptyButton();
