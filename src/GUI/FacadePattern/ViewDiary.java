@@ -71,7 +71,7 @@ public class ViewDiary extends JFrame implements ActionListener, GUI {
     private void readDiary(){
         jta2.setFocusable(false);
         jta1.setFocusable(false);
-        try (BufferedReader br = new BufferedReader(new FileReader(".src/GUI/Diary.txt"));) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/GUI/Diary.txt"));) {
             while ((temp = br.readLine()) != null) {
                 counter++;
                 String[] parts = temp.split("¤");
